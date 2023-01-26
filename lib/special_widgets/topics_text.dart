@@ -21,6 +21,7 @@ class TopicText extends StatelessWidget {
             fontWeight: FontWeight.w600,
           ),
           overflow: TextOverflow.clip,
+          textAlign: TextAlign.center,
         ),
       ),
     );

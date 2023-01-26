@@ -30,7 +30,7 @@ class ContactsZip extends StatelessWidget {
     );
   }
 
-  double paddingAll = 2.h;
+  double paddingAll = 3.h;
 
   @override
   Widget build(BuildContext context) {
@@ -64,9 +64,9 @@ class ContactsZip extends StatelessWidget {
                   ),
                 ],
               ),
-              child: JustText(),
+              child: JustText("<-   "),
             )
-          : (type!="Photo")?JustText():Text(""),
+          : (type!="Photo")?JustText(""):Text(""),
     ]);
   }
 
@@ -79,9 +79,9 @@ class ContactsZip extends StatelessWidget {
     await launchUrl(Uri.parse('$mailtoLink'));
   }
 
-  MainText JustText() {
+  MainText JustText(String additional_text) {
     return MainText(
-      text: textInfo,
+      text: additional_text + textInfo,
       size: 25,
       levelBold: 0,
       paddingLevel: paddingAll,

@@ -5,7 +5,8 @@ import 'package:portfolio/my_projects/calculator.dart';
 import 'package:portfolio/my_projects/calendar.dart';
 import 'package:portfolio/extra_skills/abstract_factory.dart';
 import 'package:portfolio/my_projects/to_do_app/main_to_do.dart';
-import 'package:portfolio/special_widgets/contact_widget.dart';
+import 'package:portfolio/sections/contacts_section.dart';
+import 'package:portfolio/sections/contact_widget.dart';
 import 'package:portfolio/special_widgets/main_text.dart';
 import 'package:portfolio/special_widgets/project_buttons.dart';
 import 'package:portfolio/special_widgets/social_links_button.dart';
@@ -79,29 +80,26 @@ class HomePage extends StatelessWidget {
         backgroundColor: const Color(0xFFEEE16D),
         elevation: 0,
       ),
-      body: GridView(
+      body: GridView.count(
         shrinkWrap: true,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-        ),
+        // childAspectRatio: 1 / 2,
+        crossAxisCount: 2,
         children: [
-
-
-                      for(int index =0; index<myContacts.length;index++)
-                      Expanded(
-                        child: ContactsZip(
-                          type: myContacts.elementAt(index)[0],
-                          textInfo: myContacts.elementAt(index)[1],
-                        ),
-                      ),
-
-
-
-                    TopicNMain(topic: "About me", main_text: "I have completed several personal projects and have strong communication skills. As a junior Android developer, I am eager to apply my skills and continue learning in this field. I am committed to constantly improving and expanding my abilities, and I am excited to contribute to the success of a team.", topic_size: 33)
-
-
-
-
+          ContactsSection(myContacts: myContacts),
+          const TopicNMain(
+              topic: "About me",
+              main_text:
+                  "I have completed several personal projects and have strong communication skills. As a junior Android developer, I am eager to apply my skills and continue learning in this field. I am committed to constantly improving and expanding my abilities, and I am excited to contribute to the success of a team.",
+              topic_size: 33),
+          TopicText(text: "Skills", fontSizeS: 33),
+          GridView.count(crossAxisCount: 2,
+          children: [
+            for(int i =0; i<mySkills.length;i++)
+              MainText(text: mySkills.elementAt(i),
+                  size: 14,
+                  levelBold: 0,
+                  paddingLevel: 0)
+          ],)
         ],
       ),
     );
