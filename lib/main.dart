@@ -9,6 +9,7 @@ import 'package:portfolio/special_widgets/contact_widget.dart';
 import 'package:portfolio/special_widgets/main_text.dart';
 import 'package:portfolio/special_widgets/project_buttons.dart';
 import 'package:portfolio/special_widgets/social_links_button.dart';
+import 'package:portfolio/special_widgets/topic_plus_main_text.dart';
 import 'package:portfolio/special_widgets/topics_text.dart';
 import 'package:sizer/sizer.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -78,43 +79,27 @@ class HomePage extends StatelessWidget {
         backgroundColor: const Color(0xFFEEE16D),
         elevation: 0,
       ),
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
+      body: GridView(
+        shrinkWrap: true,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+        ),
         children: [
-          Expanded(
-              child: ListView.builder(
-            itemCount: myContacts.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: ContactsZip(
-                      type: myContacts.elementAt(index)[0],
-                      textInfo: myContacts.elementAt(index)[1],
-                    ),
-                  ),
-                  // ContactsZip(type: aboutSection.elementAt(index)[0], textInfo: aboutSection.elementAt(index)[1])
-                ],
-              );
-            },
-          )),
-          Expanded(child: ListView(
-              padding: const EdgeInsets.all(8),
-              children: <Widget>[
-                TopicText(text: "About me", fontSizeS: 33),
-                MainText(text: "I have completed several personal projects and have strong communication skills. As a junior Android developer, I am eager to apply my skills and continue learning in this field. I am committed to constantly improving and expanding my abilities, and I am excited to contribute to the success of a team.",
-                    size: 20, levelBold: 0, paddingLevel: 2),
 
-                ListView.builder(itemCount: mySkills.length,
-    itemBuilder: (BuildContext context, int index) {
-    return 
-    })
 
-                ]
-          )),
+                      for(int index =0; index<myContacts.length;index++)
+                      Expanded(
+                        child: ContactsZip(
+                          type: myContacts.elementAt(index)[0],
+                          textInfo: myContacts.elementAt(index)[1],
+                        ),
+                      ),
+
+
+
+                    TopicNMain(topic: "About me", main_text: "I have completed several personal projects and have strong communication skills. As a junior Android developer, I am eager to apply my skills and continue learning in this field. I am committed to constantly improving and expanding my abilities, and I am excited to contribute to the success of a team.", topic_size: 33)
+
+
 
 
         ],
