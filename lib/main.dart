@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:portfolio/sections/contact_widget.dart';
 import 'package:portfolio/special_widgets/main_text.dart';
 import 'package:portfolio/special_widgets/social_links_button.dart';
+import 'package:portfolio/special_widgets/topic_plus_grid.dart';
 import 'package:portfolio/special_widgets/topics_text.dart';
 import 'package:sizer/sizer.dart';
 
@@ -178,24 +179,8 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                SliverToBoxAdapter(
-                  child:TopicText(text: "Find me"),
-                ),
-                SliverPadding(
-                    padding: const EdgeInsets.all(8.0),
-                    sliver: SliverGrid(
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: linkButtonsList.length,
-                          mainAxisSpacing: 0,
-                          crossAxisSpacing: 5,
-                          childAspectRatio: 5,
-                        ),
-                        delegate: SliverChildBuilderDelegate((context, index) {
-                          return LinkButton(
-                              text: linkButtonsList.elementAt(index)[0],
-                              urlText: linkButtonsList.elementAt(index)[1]);
-                        },
-                          childCount: linkButtonsList.length,))),
+                TopicNGrid(text: 'Find me', gridlist: linkButtonsList,
+                columnsAmount: linkButtonsList.length,),
                 SliverToBoxAdapter(
                   child:TopicText(text: "Projects"),
                 ),
