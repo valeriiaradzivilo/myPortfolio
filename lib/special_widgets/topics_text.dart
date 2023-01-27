@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 class TopicText extends StatelessWidget {
   final String text;
-  final double fontSizeS;
-  const TopicText({Key? key, required this.text, required this.fontSizeS}) : super(key: key);
+
+  const TopicText({Key? key, required this.text}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class TopicText extends StatelessWidget {
           text.toUpperCase(),
           style: TextStyle(
             color: Colors.white,
-            fontSize: fontSizeS,
+            fontSize: 33,
             fontFamily: 'Lato',
             fontWeight: FontWeight.w600,
           ),

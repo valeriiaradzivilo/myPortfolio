@@ -12,7 +12,7 @@ class TopicNMain extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TopicText(text: topic, fontSizeS: topic_size),
+        TopicText(text: topic),
         MainText(text: main_text, size: topic_size-10, levelBold: 0, paddingLevel: 2)
       ],
     );

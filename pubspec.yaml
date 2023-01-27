@@ -25,7 +25,7 @@ dependencies:
   hive_flutter: ^1.1.0
   flutter_slidable: ^2.0.0
   confetti: ^0.7.0
-  flutter_shake_animated: ^0.0.5
+  flutter_layout_grid: ^1.0.3
 
 
 

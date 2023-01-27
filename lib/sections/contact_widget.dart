@@ -1,8 +1,5 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_shake_animated/flutter_shake_animated.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:mailto/mailto.dart';
 import 'package:portfolio/special_widgets/topics_text.dart';
@@ -40,9 +37,9 @@ class ContactsZip extends StatelessWidget {
               padding: EdgeInsets.all(paddingAll),
               child: Image(
                 image: AssetImage(textInfo),
-                width: 25.w,
+                width: 15.w,
               ))
-          : TopicText(text: type, fontSizeS: 33),
+          : TopicText(text: type),
       (type == "Phone" || type == "Email")
           ? Slidable(
               endActionPane: ActionPane(
@@ -64,7 +61,7 @@ class ContactsZip extends StatelessWidget {
                   ),
                 ],
               ),
-              child: JustText("<-   "),
+              child: Center(child: JustText("<-   ")),
             )
           : (type!="Photo")?JustText(""):Text(""),
     ]);
@@ -82,7 +79,7 @@ class ContactsZip extends StatelessWidget {
   MainText JustText(String additional_text) {
     return MainText(
       text: additional_text + textInfo,
-      size: 25,
+      size: textInfo.length>100?2.w:3.w,
       levelBold: 0,
       paddingLevel: paddingAll,
     );
