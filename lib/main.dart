@@ -7,6 +7,8 @@ import 'package:portfolio/special_widgets/topic_plus_grid.dart';
 import 'package:portfolio/special_widgets/topics_text.dart';
 import 'package:sizer/sizer.dart';
 
+import 'extra_skills/abstract_factory.dart';
+import 'extra_skills/builder_design_pattern/main_builder.dart';
 import 'my_projects/api_project/views/home_page_api.dart';
 import 'my_projects/calculator.dart';
 import 'my_projects/calendar.dart';
@@ -76,17 +78,22 @@ class HomePage extends StatelessWidget {
   List linkButtonsList = [
     [
       "LinkedIn profile",
-      "https://www.linkedin.com/in/valeriia-radzivilo-0883ba248"
+      "https://www.linkedin.com/in/valeriia-radzivilo-0883ba248",
+      "link"
     ],
-    ["Personal Github", "https://github.com/valeriiaradzivilo"],
-    ["Study Github", "https://github.com/valeriia-radzivilo"],
+    ["Personal Github", "https://github.com/valeriiaradzivilo",
+      "link"],
+    ["Study Github", "https://github.com/valeriia-radzivilo",
+      "link"],
   ];
 
   List projectButtonsList = [
-    ["Calendar for online teachers",SimpleCalendar()],
-    ["REST API work", ApiWorkPage()],
-    ["Calculator", Calculator()],
-    ["To Doer", ToDoAppPage()]
+    ["Calendar for online teachers", SimpleCalendar(),"project"],
+    ["REST API work", ApiWorkPage(),"project"],
+    ["Calculator", Calculator(),"project"],
+    ["To Doer", ToDoAppPage(),"project"],
+    ["Design Pattern: Abstract Factory",AbstractFactory(),"project"],
+    ["Design Pattern: Builder",BuilderAppHomePage(),"project"]
   ];
 
   @override
@@ -132,7 +139,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 SliverToBoxAdapter(
-                  child:TopicText(text: "GENERAL INFORMATION"),
+                  child: TopicText(text: "GENERAL INFORMATION"),
                 ),
                 SliverPadding(
                   padding: const EdgeInsets.all(8.0),
@@ -179,26 +186,18 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                TopicNGrid(text: 'Find me', gridlist: linkButtonsList,
-                columnsAmount: linkButtonsList.length,),
-                SliverToBoxAdapter(
-                  child:TopicText(text: "Projects"),
+                SliverToBoxAdapter(child: TopicText(text: "Find me")),
+                TopicNGrid(
+                  gridlist: linkButtonsList,
+                  columnsAmount: linkButtonsList.length,
                 ),
-                SliverPadding(
-                    padding: const EdgeInsets.all(8.0),
-                    sliver: SliverGrid(
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: linkButtonsList.length,
-                          mainAxisSpacing: 0,
-                          crossAxisSpacing: 5,
-                          childAspectRatio: 5,
-                        ),
-                        delegate: SliverChildBuilderDelegate((context, index) {
-                          return LinkButton(
-                              text: linkButtonsList.elementAt(index)[0],
-                              urlText: linkButtonsList.elementAt(index)[1]);
-                        },
-                          childCount: linkButtonsList.length,))),
+                SliverToBoxAdapter(
+                  child: TopicText(text: "Projects"),
+                ),
+                TopicNGrid(
+                  gridlist: projectButtonsList,
+                  columnsAmount: (projectButtonsList.length/3).toInt(),
+                ),
               ],
             ),
           ),

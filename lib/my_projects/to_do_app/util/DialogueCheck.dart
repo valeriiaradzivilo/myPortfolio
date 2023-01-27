@@ -26,9 +26,11 @@ class DialogueCheck extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.bold,
             fontSize: 7.w),),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 MyButton(name: "No", onPressed: onNo),
-                SizedBox(width: 20.w,),
+                SizedBox(width: 10.w,),
                 MyButton(name: "Yes", onPressed: onYes),
               ],
             )
