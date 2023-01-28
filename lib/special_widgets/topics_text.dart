@@ -9,14 +9,14 @@ class TopicText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.all(0),
       child: Container(
         color: const Color(0xFF38338e),
         child: Text(
           text.toUpperCase(),
           style: TextStyle(
             color: Colors.white,
-            fontSize: 33,
+            fontSize: 43,
             fontFamily: 'Lato',
             fontWeight: FontWeight.w600,
           ),

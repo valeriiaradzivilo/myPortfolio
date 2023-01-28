@@ -37,42 +37,47 @@ class MyApp extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
-  List myContacts = [
+
+  List bigInfo = [
     [
       "Photo",
-      ["assets/images/my_photo.jpg"]
+      "assets/images/my_photo.jpg", "big"
     ],
     [
       "About me",
-      [
-        "I have completed several personal projects and have strong communication skills. As a junior Android developer, I am eager to apply my skills and continue learning in this field. I am committed to constantly improving and expanding my abilities, and I am excited to contribute to the success of a team."
-      ]
+
+      "I have completed several personal projects and have strong communication skills. As a junior Android developer, I am eager to apply my skills and continue learning in this field. I am committed to constantly improving and expanding my abilities, and I am excited to contribute to the success of a team."
+      , "big"
     ],
+  ];
+  List myContacts = [
+
     [
       "City",
-      ["Kyiv, Ukraine"]
+      "Kyiv, Ukraine", "contact"
     ],
     [
       "Phone",
-      ["+380997103409"]
+      "+380997103409", "contact"
     ],
     [
       "Email",
-      ["radzivilovaleriia@gmail.com"]
+      "radzivilovaleriia@gmail.com", "contact"
     ],
-    [
-      "Skills",
-      [
-        "Java",
-        "Kotlin",
-        "Android Studio",
-        "REST API",
-        "MYSQL",
-        "Flutter",
-        "Dart",
-        "Git"
-      ]
-    ],
+
+  ];
+
+  List mySkills =
+  [
+    ["Skills", "Java", "text"],
+    ["Skills", "Kotlin", "text"],
+    ["Skills", "Android Studio", "text"],
+    ["Skills", "REST API", "text"],
+    ["Skills", "MYSQL", "text"],
+    ["Skills", "Flutter", "text"],
+    ["Skills", "Git", "text"],
+    ["Skills", "Dart", "text"],
+
   ];
 
   List linkButtonsList = [
@@ -104,7 +109,6 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
         title: MainText(
           text: "Valeriia Radzivilo",
-          size: 3.w + 3.h,
           levelBold: 2,
           paddingLevel: 2.h,
         ),
@@ -131,60 +135,23 @@ class HomePage extends StatelessWidget {
                       padding: EdgeInsets.all(8.0),
                       child: MainText(
                         text: "Android / Flutter developer",
-                        size: 1.w + 1.h,
                         levelBold: 2,
                         paddingLevel: 1.h,
                       ),
                     ),
                   ),
                 ),
+
                 SliverToBoxAdapter(
                   child: TopicText(text: "GENERAL INFORMATION"),
                 ),
-                SliverPadding(
-                  padding: const EdgeInsets.all(8.0),
-                  sliver: SliverGrid(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 0,
-                      crossAxisSpacing: 5,
-                      childAspectRatio: 0.1.w,
-                    ),
-                    delegate: SliverChildBuilderDelegate(
-                      (context, index) {
-                        return myContacts.elementAt(index)[1].length == 1
-                            ? Column(
-                                children: [
-                                  Expanded(
-                                    child: ContactsZip(
-                                      type: myContacts.elementAt(index)[0],
-                                      textInfo: myContacts.elementAt(index)[1]
-                                          [0],
-                                    ),
-                                  ),
-                                ],
-                              )
-                            : Column(
-                                children: [
-                                  TopicText(
-                                      text: myContacts.elementAt(index)[0]),
-                                  for (int i = 0;
-                                      i < myContacts.elementAt(index)[1].length;
-                                      i++)
-                                    Expanded(
-                                      child: MainText(
-                                          text: myContacts.elementAt(index)[1]
-                                              [i],
-                                          size: 23,
-                                          levelBold: 0,
-                                          paddingLevel: 1),
-                                    ),
-                                ],
-                              );
-                      },
-                      childCount: myContacts.length,
-                    ),
-                  ),
+                TopicNGrid(
+                  gridlist: bigInfo,
+                  columnsAmount: 2,
+                ),
+                TopicNGrid(
+                  gridlist: myContacts,
+                  columnsAmount: 1,
                 ),
                 SliverToBoxAdapter(child: TopicText(text: "Find me")),
                 TopicNGrid(

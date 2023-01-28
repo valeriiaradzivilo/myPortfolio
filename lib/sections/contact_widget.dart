@@ -27,44 +27,48 @@ class ContactsZip extends StatelessWidget {
     );
   }
 
-  double paddingAll = 3.h;
+  double paddingAll = 3.w;
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      type == "Photo"
-          ? Padding(
-              padding: EdgeInsets.all(paddingAll),
-              child: Image(
-                image: AssetImage(textInfo),
-                width: 15.w,
-              ))
-          : TopicText(text: type),
-      (type == "Phone" || type == "Email")
-          ? Slidable(
-              endActionPane: ActionPane(
-                motion: const StretchMotion(),
-                children: [
-                  SlidableAction(
-                    onPressed: type == "Phone"
-                        ? (context) => makeCall()
-                        : (context) => _sendEmail(),
-                    icon: type == "Phone" ? Icons.phone : Icons.mail,
-                    backgroundColor: Colors.greenAccent,
-                    borderRadius: BorderRadius.circular(12),
+    return
+       Column(children: [
+        type == "Photo"
+            ?
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Image(
+                    image: AssetImage(textInfo),
+                    width: 30.h,
                   ),
-                  SlidableAction(
-                    onPressed: (context) => copyText(context),
-                    icon: Icons.copy,
-                    backgroundColor: Colors.blueAccent,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ],
-              ),
-              child: Center(child: JustText("<-   ")),
-            )
-          : (type!="Photo")?JustText(""):Text(""),
-    ]);
+                )
+            : TopicText(text: type),
+        (type == "Phone" || type == "Email")
+            ? Slidable(
+                endActionPane: ActionPane(
+                  motion: const StretchMotion(),
+                  children: [
+                    SlidableAction(
+                      onPressed: type == "Phone"
+                          ? (context) => makeCall()
+                          : (context) => _sendEmail(),
+                      icon: type == "Phone" ? Icons.phone : Icons.mail,
+                      backgroundColor: Colors.greenAccent,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    SlidableAction(
+                      onPressed: (context) => copyText(context),
+                      icon: Icons.copy,
+                      backgroundColor: Colors.blueAccent,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ],
+                ),
+                child: Center(child: JustText("<-   ")),
+              )
+            : (type!="Photo")?JustText(""):Text(""),
+      ]
+    );
   }
 
   _sendEmail() async {
@@ -79,7 +83,6 @@ class ContactsZip extends StatelessWidget {
   MainText JustText(String additional_text) {
     return MainText(
       text: additional_text + textInfo,
-      size: textInfo.length>100?2.w:3.w,
       levelBold: 0,
       paddingLevel: paddingAll,
     );

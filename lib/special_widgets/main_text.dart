@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 
 class MainText extends StatelessWidget {
   final String text;
-  final double size;
+
   final int levelBold;
   final double paddingLevel;
-  const MainText({Key? key, required this.text, required this.size, required this.levelBold, required this.paddingLevel}) : super(key: key);
+  const MainText({Key? key, required this.text,required this.levelBold, required this.paddingLevel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class MainText extends StatelessWidget {
         text,
         style: TextStyle(
           color: CupertinoColors.black,
-          fontSize: size,
+          fontSize: 23,
           fontFamily: 'Lato',
           fontWeight: levelBold == 1
               ? FontWeight.w700
